@@ -196,8 +196,7 @@ is_tma_supported = (is_nvidia and torch.cuda.get_device_capability(0)[0] >= 9) \
 is_gather_supported = hasattr(triton.language, 'gather')
 
 # NPU (Ascend) hardware limit: coreDim (product of all grid dimensions) ≤ 65535.
-# We use 65534 as the threshold to stay safely under the limit.
-MAX_COREDIM = 65534
+MAX_COREDIM = 65535
 
 # Uppercase aliases for backward compatibility with fla.utils import convention.
 # KDA and other upstream code imports these as uppercase (e.g., IS_AMD, IS_GATHER_SUPPORTED).
