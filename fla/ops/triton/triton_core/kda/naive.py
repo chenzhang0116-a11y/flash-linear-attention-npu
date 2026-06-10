@@ -1,4 +1,6 @@
 
+# Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
+# Adapted from fla/ops/kda/naive.py for NPU (Triton-only).
 
 import torch
 from einops import rearrange

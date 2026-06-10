@@ -1,6 +1,7 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
 # Extracted from fla/ops/common/chunk_delta_h.py for KDA NPU adaptation.
 # Only chunk_gated_delta_rule_fwd_h and chunk_gated_delta_rule_bwd_dhu are included.
+# Original CUDA autotune configs preserved as comments; use_cuda_graph removed for NPU compat.
 
 import torch
 import triton

@@ -1,4 +1,5 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
+# Adapted from fla/ops/kda/chunk_intra.py for NPU (Triton-only).
 
 import torch
 import triton

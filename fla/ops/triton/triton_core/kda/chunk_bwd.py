@@ -525,8 +525,8 @@ def chunk_kda_bwd_dAv(
     BT = chunk_size
     if chunk_indices is None and cu_seqlens is not None:
         chunk_indices = prepare_chunk_indices(cu_seqlens, BT)
-    # H100 can have larger block size
-    if check_shared_mem('hopper', k.device.index if k.is_cuda else 0):
+    # H100 can have larger block size; on NPU use conservative tiling
+    if k.is_cuda and check_shared_mem('hopper', k.device.index):
         CONST_TILING = 128
     elif check_shared_mem:
         CONST_TILING = 64

@@ -1,4 +1,5 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
+# Adapted from fla/ops/kda/wy_fast.py for NPU (Triton-only).
 
 import torch
 import triton

@@ -1,5 +1,5 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
-# Token-parallel implementation of KDA intra chunk kernel
+# Adapted from fla/ops/kda/chunk_intra_token_parallel.py for NPU (Triton-only).
 
 import torch
 import triton

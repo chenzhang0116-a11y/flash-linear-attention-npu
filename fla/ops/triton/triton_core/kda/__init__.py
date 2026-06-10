@@ -1,3 +1,6 @@
+# Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
+# Adapted from fla/ops/kda/__init__.py for NPU (Triton-only, no CP support).
+
 from .chunk import chunk_kda
 from .chunk_delta_h import chunk_gated_delta_rule_bwd_dhu, chunk_gated_delta_rule_fwd_h
 from .chunk_fwd_o import chunk_kda_fwd_o_gk

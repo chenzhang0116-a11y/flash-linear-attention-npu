@@ -1,5 +1,5 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
-# This file is modified and supported by the Moonshot AI Team
+# Adapted from fla/ops/kda/gate.py for NPU (Triton-only, with autotune filtering).
 
 import torch
 import torch.nn.functional as F

@@ -1,5 +1,6 @@
 # Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
-# This kernel is modified from the Decode kernel of the vllm gdn/kda model.
+# Adapted from fla/ops/kda/fused_recurrent.py for NPU (Triton-only).
+# Originally modified from the Decode kernel of the vllm gdn/kda model.
 
 import torch
 import triton
@@ -373,15 +374,15 @@ def fused_recurrent_kda(
         >>> import torch
         >>> import torch.nn.functional as F
         >>> from einops import rearrange
-        >>> from fla.ops.kda import fused_recurrent_kda
+        >>> from fla.ops.triton.triton_core.kda import fused_recurrent_kda
         # inputs with equal lengths
         >>> B, T, H, HV, K, V = 4, 2048, 4, 8, 512, 512
-        >>> q = torch.randn(B, T, H, K, device='cuda')
-        >>> k = F.normalize(torch.randn(B, T, H, K, device='cuda'), p=2, dim=-1)
-        >>> v = torch.randn(B, T, HV, V, device='cuda')
-        >>> g = F.logsigmoid(torch.rand(B, T, HV, K, device='cuda'))
-        >>> beta = torch.rand(B, T, HV, device='cuda').sigmoid()
-        >>> h0 = torch.randn(B, HV, K, V, device='cuda')
+        >>> q = torch.randn(B, T, H, K)
+        >>> k = F.normalize(torch.randn(B, T, H, K), p=2, dim=-1)
+        >>> v = torch.randn(B, T, HV, V)
+        >>> g = F.logsigmoid(torch.rand(B, T, HV, K))
+        >>> beta = torch.rand(B, T, HV).sigmoid()
+        >>> h0 = torch.randn(B, HV, K, V)
         >>> o, ht = fused_recurrent_kda(
             q, k, v, g, beta,
             initial_state=h0,
